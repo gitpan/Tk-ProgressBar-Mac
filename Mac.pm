@@ -1,4 +1,4 @@
-$Tk::ProgressBar::Mac::VERSION = '1.1';
+$Tk::ProgressBar::Mac::VERSION = '1.2';
 
 package Tk::ProgressBar::Mac;
 
@@ -73,17 +73,9 @@ sub Populate {
 
     $self->ConfigSpecs(DEFAULT => [$lb]);
 
-    $self->OnDestroy([$self => 'free_photo']);
+    $lb->OnDestroy([ destroy => $i ]);
 
 } # end Populate
-
-sub free_photo {
-
-    # Free the ProgressBar image.
-
-    $_[0]->Subwidget('label')->cget(-image)->delete;
-
-} # end free_photo
 
 sub reset {
 
@@ -265,7 +257,7 @@ Valid subwidget names are listed below.
 
 sol0@Lehigh.EDU
 
-Copyright (C) 2000 - 2002, Stephen O. Lidie.
+Copyright (C) 2000 - 2003, Stephen O. Lidie.
 
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
